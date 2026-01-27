@@ -1,0 +1,3 @@
+The utilization report for synthesis has no usage of the clbs or parts of the FPGA. The implementation report uses the CLBs since we are actually placing and laying out the physical connections and LUTs in the FPGA at this step.
+
+If we need to use a large memory, we could use the DRAM chips within the board. We could also use the GPIO pins to interface with an external storage device. 
