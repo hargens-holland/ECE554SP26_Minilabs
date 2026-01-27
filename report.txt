@@ -1,3 +1,3 @@
-The utilization report for synthesis has no usage of the clbs or parts of the FPGA. The implementation report uses the CLBs since we are actually placing and laying out the physical connections and LUTs in the FPGA at this step.
+Synthesis reports estimate resource usage based on the logical mapping of the design, while Implementation reflects the final placed-and-routed design, which can change how resources are actually used on the FPGA.
 
-If we need to use a large memory, we could use the DRAM chips within the board. We could also use the GPIO pins to interface with an external storage device. 
+For larger memory, instead of implementing memory using flip-flops, the design can use dedicated RAM resources on the FPGA, which are optimized for large storage and reduce FF usage. Also, a peripheral storage device could be used for very large memory requirements.
