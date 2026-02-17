@@ -1,0 +1,1 @@
+The main difference for the different summary reports in summary 1 and 2 is because summary2 uses ip while summary one doesn't use ip, so they have different Verilog which ultimately leads to different data for the summaries.

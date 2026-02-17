@@ -1,0 +1,14 @@
+How I tested the design via simulation:
+I verified the functionality of the design using simulation in ModelSim/QuestaSim by creating a testbench that generatedinput stimuli. I observed the waveform to confirm correct expected output values across multiple test cases. The waveform showed that all signals changed synchronously with the clock and matched the expected results from manual analysis, confirming that the logic was functionally correct before moving to hardware implementation.
+
+How I fixed the design to meet the timing constraint:
+After synthesizing the design in Quartus, I found that the design initially failed timing due to a long combinational critical path. To resolve this, I inserted pipeline registers to break up the long logic path and reduce combinational delay between registers. 
+
+How I tested the design on the board:
+Once timing was met, I programmed the FPGA board and verified the design using switches as inputs and LEDs as outputs. 
+
+How I tested the design using SignalTap:
+To further validate internal signals on hardware, I used SignalTap to capture waveforms around a defined trigger condition. I selected key internal signals, such as state registers and output signals, and configured a trigger event to record activity during operation. The captured waveform showed correct signal transitions and timing relationships, which matched the simulation results and confirmed that the internal logic behaved as expected on the FPGA.
+
+Difficulties faced and how I overcame them:
+One of the main challenges was resolving timing violations caused by long combinational paths, which required careful analysis of the critical path and restructuring the design to include pipelining. Another difficulty was debugging differences between simulation and hardware behavior, which I addressed by using SignalTap to observe internal signals directly on the FPGA. 

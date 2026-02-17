@@ -1,0 +1,4070 @@
+# Reading pref.tcl
+# vsim -gui work.matrix_vector_mult_tb -L altera_mf -voptargs="+acc" 
+# Start time: 16:44:27 on Feb 05,2026
+# Loading sv_std.std
+# Loading work.matrix_vector_mult_tb
+# Loading work.matrix_vector_mult_top
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf.altsyncram
+# Loading work.mem_controller
+# Loading work.fifo
+# Loading work.mac_array
+# Loading altera_mf.altsyncram_body
+# Loading altera_mf.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.mac_unit
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x000008 (8)
+#   c[1] = 0x000010 (16)
+#   c[2] = 0x000018 (24)
+#   c[3] = 0x000020 (32)
+#   c[4] = 0x000028 (40)
+#   c[5] = 0x000030 (48)
+#   c[6] = 0x000038 (56)
+#   c[7] = 0x000040 (64)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[1] Write: data=0x02
+# [305000] FIFO_A[2] Write: data=0x03
+# [315000] FIFO_A[3] Write: data=0x04
+# [325000] FIFO_A[4] Write: data=0x05
+# [335000] FIFO_A[5] Write: data=0x06
+# [345000] FIFO_A[6] Write: data=0x07
+# [355000] FIFO_A[7] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[0] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[2] Write: data=0x13
+# [545000] FIFO_A[3] Write: data=0x14
+# [555000] FIFO_A[4] Write: data=0x15
+# [565000] FIFO_A[5] Write: data=0x16
+# [575000] FIFO_A[6] Write: data=0x17
+# [585000] FIFO_A[7] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[0] Write: data=0x21
+# [755000] FIFO_A[1] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[3] Write: data=0x24
+# [785000] FIFO_A[4] Write: data=0x25
+# [795000] FIFO_A[5] Write: data=0x26
+# [805000] FIFO_A[6] Write: data=0x27
+# [815000] FIFO_A[7] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[0] Write: data=0x31
+# [985000] FIFO_A[1] Write: data=0x32
+# [995000] FIFO_A[2] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[4] Write: data=0x35
+# [1025000] FIFO_A[5] Write: data=0x36
+# [1035000] FIFO_A[6] Write: data=0x37
+# [1045000] FIFO_A[7] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[0] Write: data=0x41
+# [1215000] FIFO_A[1] Write: data=0x42
+# [1225000] FIFO_A[2] Write: data=0x43
+# [1235000] FIFO_A[3] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[5] Write: data=0x46
+# [1265000] FIFO_A[6] Write: data=0x47
+# [1275000] FIFO_A[7] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[0] Write: data=0x51
+# [1445000] FIFO_A[1] Write: data=0x52
+# [1455000] FIFO_A[2] Write: data=0x53
+# [1465000] FIFO_A[3] Write: data=0x54
+# [1475000] FIFO_A[4] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[6] Write: data=0x57
+# [1505000] FIFO_A[7] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[0] Write: data=0x61
+# [1675000] FIFO_A[1] Write: data=0x62
+# [1685000] FIFO_A[2] Write: data=0x63
+# [1695000] FIFO_A[3] Write: data=0x64
+# [1705000] FIFO_A[4] Write: data=0x65
+# [1715000] FIFO_A[5] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[7] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[0] Write: data=0x71
+# [1905000] FIFO_A[1] Write: data=0x72
+# [1915000] FIFO_A[2] Write: data=0x73
+# [1925000] FIFO_A[3] Write: data=0x74
+# [1935000] FIFO_A[4] Write: data=0x75
+# [1945000] FIFO_A[5] Write: data=0x76
+# [1955000] FIFO_A[6] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x02, result=0x000000
+#   MAC[2]: A=0x03, result=0x000000
+#   MAC[3]: A=0x04, result=0x000000
+#   MAC[4]: A=0x05, result=0x000000
+#   MAC[5]: A=0x06, result=0x000000
+#   MAC[6]: A=0x07, result=0x000000
+#   MAC[7]: A=0x08, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x11, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x13, result=0x000000
+#   MAC[3]: A=0x14, result=0x000000
+#   MAC[4]: A=0x15, result=0x000000
+#   MAC[5]: A=0x16, result=0x000000
+#   MAC[6]: A=0x17, result=0x000000
+#   MAC[7]: A=0x18, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x21, result=0x000923
+#   MAC[1]: A=0x22, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x24, result=0x000000
+#   MAC[4]: A=0x25, result=0x000000
+#   MAC[5]: A=0x26, result=0x000000
+#   MAC[6]: A=0x27, result=0x000000
+#   MAC[7]: A=0x28, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x31, result=0x001a06
+#   MAC[1]: A=0x32, result=0x001a56
+#   MAC[2]: A=0x33, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x35, result=0x000000
+#   MAC[5]: A=0x36, result=0x000000
+#   MAC[6]: A=0x37, result=0x000000
+#   MAC[7]: A=0x38, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x41, result=0x00334a
+#   MAC[1]: A=0x42, result=0x0033ec
+#   MAC[2]: A=0x43, result=0x002b89
+#   MAC[3]: A=0x44, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x46, result=0x000000
+#   MAC[6]: A=0x47, result=0x000000
+#   MAC[7]: A=0x48, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x51, result=0x00550f
+#   MAC[1]: A=0x52, result=0x0055f4
+#   MAC[2]: A=0x53, result=0x004dd2
+#   MAC[3]: A=0x54, result=0x003cbc
+#   MAC[4]: A=0x55, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x57, result=0x000000
+#   MAC[7]: A=0x58, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x61, result=0x007f75
+#   MAC[1]: A=0x62, result=0x00808e
+#   MAC[2]: A=0x63, result=0x00789e
+#   MAC[3]: A=0x64, result=0x0067b8
+#   MAC[4]: A=0x65, result=0x004def
+#   MAC[5]: A=0x66, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x68, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# [2315000] MAC Enabled (count=7)
+#   MAC[0]: A=0x71, result=0x00b29c
+#   MAC[1]: A=0x72, result=0x00b3da
+#   MAC[2]: A=0x73, result=0x00ac0d
+#   MAC[3]: A=0x74, result=0x009b48
+#   MAC[4]: A=0x75, result=0x00819e
+#   MAC[5]: A=0x76, result=0x005f22
+#   MAC[6]: A=0x77, result=0x0033e7
+#   MAC[7]: A=0x78, result=0x000000
+#   B=0x88
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[1] Write: data=0x02
+# [2395000] FIFO_A[2] Write: data=0x03
+# [2405000] FIFO_A[3] Write: data=0x04
+# [2415000] FIFO_A[4] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x00eea4, Expected 0x000008 (Diff: 61084)
+# [FAIL] c[1]: Got 0x012c88, Expected 0x000010 (Diff: 76920)
+# [FAIL] c[2]: Got 0x0161fc, Expected 0x000018 (Diff: 90596)
+# [FAIL] c[3]: Got 0x018f10, Expected 0x000020 (Diff: 102128)
+# [FAIL] c[4]: Got 0x01b3d4, Expected 0x000028 (Diff: 111532)
+# [FAIL] c[5]: Got 0x01d058, Expected 0x000030 (Diff: 118824)
+# [FAIL] c[6]: Got 0x01e4ac, Expected 0x000038 (Diff: 124020)
+# [FAIL] c[7]: Got 0x01f0e0, Expected 0x000040 (Diff: 127136)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[5] Write: data=0x06
+# [2435000] FIFO_A[6] Write: data=0x07
+# [2445000] FIFO_A[7] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[0] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(150)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 150
+add wave -position insertpoint sim:/matrix_vector_mult_tb/dut/*
+restart
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x000008 (8)
+#   c[1] = 0x000010 (16)
+#   c[2] = 0x000018 (24)
+#   c[3] = 0x000020 (32)
+#   c[4] = 0x000028 (40)
+#   c[5] = 0x000030 (48)
+#   c[6] = 0x000038 (56)
+#   c[7] = 0x000040 (64)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[1] Write: data=0x02
+# [305000] FIFO_A[2] Write: data=0x03
+# [315000] FIFO_A[3] Write: data=0x04
+# [325000] FIFO_A[4] Write: data=0x05
+# [335000] FIFO_A[5] Write: data=0x06
+# [345000] FIFO_A[6] Write: data=0x07
+# [355000] FIFO_A[7] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[0] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[2] Write: data=0x13
+# [545000] FIFO_A[3] Write: data=0x14
+# [555000] FIFO_A[4] Write: data=0x15
+# [565000] FIFO_A[5] Write: data=0x16
+# [575000] FIFO_A[6] Write: data=0x17
+# [585000] FIFO_A[7] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[0] Write: data=0x21
+# [755000] FIFO_A[1] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[3] Write: data=0x24
+# [785000] FIFO_A[4] Write: data=0x25
+# [795000] FIFO_A[5] Write: data=0x26
+# [805000] FIFO_A[6] Write: data=0x27
+# [815000] FIFO_A[7] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[0] Write: data=0x31
+# [985000] FIFO_A[1] Write: data=0x32
+# [995000] FIFO_A[2] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[4] Write: data=0x35
+# [1025000] FIFO_A[5] Write: data=0x36
+# [1035000] FIFO_A[6] Write: data=0x37
+# [1045000] FIFO_A[7] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[0] Write: data=0x41
+# [1215000] FIFO_A[1] Write: data=0x42
+# [1225000] FIFO_A[2] Write: data=0x43
+# [1235000] FIFO_A[3] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[5] Write: data=0x46
+# [1265000] FIFO_A[6] Write: data=0x47
+# [1275000] FIFO_A[7] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[0] Write: data=0x51
+# [1445000] FIFO_A[1] Write: data=0x52
+# [1455000] FIFO_A[2] Write: data=0x53
+# [1465000] FIFO_A[3] Write: data=0x54
+# [1475000] FIFO_A[4] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[6] Write: data=0x57
+# [1505000] FIFO_A[7] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[0] Write: data=0x61
+# [1675000] FIFO_A[1] Write: data=0x62
+# [1685000] FIFO_A[2] Write: data=0x63
+# [1695000] FIFO_A[3] Write: data=0x64
+# [1705000] FIFO_A[4] Write: data=0x65
+# [1715000] FIFO_A[5] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[7] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[0] Write: data=0x71
+# [1905000] FIFO_A[1] Write: data=0x72
+# [1915000] FIFO_A[2] Write: data=0x73
+# [1925000] FIFO_A[3] Write: data=0x74
+# [1935000] FIFO_A[4] Write: data=0x75
+# [1945000] FIFO_A[5] Write: data=0x76
+# [1955000] FIFO_A[6] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x02, result=0x000000
+#   MAC[2]: A=0x03, result=0x000000
+#   MAC[3]: A=0x04, result=0x000000
+#   MAC[4]: A=0x05, result=0x000000
+#   MAC[5]: A=0x06, result=0x000000
+#   MAC[6]: A=0x07, result=0x000000
+#   MAC[7]: A=0x08, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x11, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x13, result=0x000000
+#   MAC[3]: A=0x14, result=0x000000
+#   MAC[4]: A=0x15, result=0x000000
+#   MAC[5]: A=0x16, result=0x000000
+#   MAC[6]: A=0x17, result=0x000000
+#   MAC[7]: A=0x18, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x21, result=0x000923
+#   MAC[1]: A=0x22, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x24, result=0x000000
+#   MAC[4]: A=0x25, result=0x000000
+#   MAC[5]: A=0x26, result=0x000000
+#   MAC[6]: A=0x27, result=0x000000
+#   MAC[7]: A=0x28, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x31, result=0x001a06
+#   MAC[1]: A=0x32, result=0x001a56
+#   MAC[2]: A=0x33, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x35, result=0x000000
+#   MAC[5]: A=0x36, result=0x000000
+#   MAC[6]: A=0x37, result=0x000000
+#   MAC[7]: A=0x38, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x41, result=0x00334a
+#   MAC[1]: A=0x42, result=0x0033ec
+#   MAC[2]: A=0x43, result=0x002b89
+#   MAC[3]: A=0x44, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x46, result=0x000000
+#   MAC[6]: A=0x47, result=0x000000
+#   MAC[7]: A=0x48, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x51, result=0x00550f
+#   MAC[1]: A=0x52, result=0x0055f4
+#   MAC[2]: A=0x53, result=0x004dd2
+#   MAC[3]: A=0x54, result=0x003cbc
+#   MAC[4]: A=0x55, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x57, result=0x000000
+#   MAC[7]: A=0x58, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x61, result=0x007f75
+#   MAC[1]: A=0x62, result=0x00808e
+#   MAC[2]: A=0x63, result=0x00789e
+#   MAC[3]: A=0x64, result=0x0067b8
+#   MAC[4]: A=0x65, result=0x004def
+#   MAC[5]: A=0x66, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x68, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# [2315000] MAC Enabled (count=7)
+#   MAC[0]: A=0x71, result=0x00b29c
+#   MAC[1]: A=0x72, result=0x00b3da
+#   MAC[2]: A=0x73, result=0x00ac0d
+#   MAC[3]: A=0x74, result=0x009b48
+#   MAC[4]: A=0x75, result=0x00819e
+#   MAC[5]: A=0x76, result=0x005f22
+#   MAC[6]: A=0x77, result=0x0033e7
+#   MAC[7]: A=0x78, result=0x000000
+#   B=0x88
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[1] Write: data=0x02
+# [2395000] FIFO_A[2] Write: data=0x03
+# [2405000] FIFO_A[3] Write: data=0x04
+# [2415000] FIFO_A[4] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x00eea4, Expected 0x000008 (Diff: 61084)
+# [FAIL] c[1]: Got 0x012c88, Expected 0x000010 (Diff: 76920)
+# [FAIL] c[2]: Got 0x0161fc, Expected 0x000018 (Diff: 90596)
+# [FAIL] c[3]: Got 0x018f10, Expected 0x000020 (Diff: 102128)
+# [FAIL] c[4]: Got 0x01b3d4, Expected 0x000028 (Diff: 111532)
+# [FAIL] c[5]: Got 0x01d058, Expected 0x000030 (Diff: 118824)
+# [FAIL] c[6]: Got 0x01e4ac, Expected 0x000038 (Diff: 124020)
+# [FAIL] c[7]: Got 0x01f0e0, Expected 0x000040 (Diff: 127136)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[5] Write: data=0x06
+# [2435000] FIFO_A[6] Write: data=0x07
+# [2445000] FIFO_A[7] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[0] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(150)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 150
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[7]/mac_inst/accumulator}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[6]/mac_inst/accumulator}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[5]/mac_inst/accumulator}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[4]/mac_inst/accumulator}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[3]/mac_inst/accumulator}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[2]/mac_inst/accumulator}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[1]/mac_inst/accumulator}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[0]/mac_inst/accumulator}
+restart
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -continue
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x000008 (8)
+#   c[1] = 0x000010 (16)
+#   c[2] = 0x000018 (24)
+#   c[3] = 0x000020 (32)
+#   c[4] = 0x000028 (40)
+#   c[5] = 0x000030 (48)
+#   c[6] = 0x000038 (56)
+#   c[7] = 0x000040 (64)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[1] Write: data=0x02
+# [305000] FIFO_A[2] Write: data=0x03
+# [315000] FIFO_A[3] Write: data=0x04
+# [325000] FIFO_A[4] Write: data=0x05
+# [335000] FIFO_A[5] Write: data=0x06
+# [345000] FIFO_A[6] Write: data=0x07
+# [355000] FIFO_A[7] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[0] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[2] Write: data=0x13
+# [545000] FIFO_A[3] Write: data=0x14
+# [555000] FIFO_A[4] Write: data=0x15
+# [565000] FIFO_A[5] Write: data=0x16
+# [575000] FIFO_A[6] Write: data=0x17
+# [585000] FIFO_A[7] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[0] Write: data=0x21
+# [755000] FIFO_A[1] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[3] Write: data=0x24
+# [785000] FIFO_A[4] Write: data=0x25
+# [795000] FIFO_A[5] Write: data=0x26
+# [805000] FIFO_A[6] Write: data=0x27
+# [815000] FIFO_A[7] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[0] Write: data=0x31
+# [985000] FIFO_A[1] Write: data=0x32
+# [995000] FIFO_A[2] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[4] Write: data=0x35
+# [1025000] FIFO_A[5] Write: data=0x36
+# [1035000] FIFO_A[6] Write: data=0x37
+# [1045000] FIFO_A[7] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[0] Write: data=0x41
+# [1215000] FIFO_A[1] Write: data=0x42
+# [1225000] FIFO_A[2] Write: data=0x43
+# [1235000] FIFO_A[3] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[5] Write: data=0x46
+# [1265000] FIFO_A[6] Write: data=0x47
+# [1275000] FIFO_A[7] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[0] Write: data=0x51
+# [1445000] FIFO_A[1] Write: data=0x52
+# [1455000] FIFO_A[2] Write: data=0x53
+# [1465000] FIFO_A[3] Write: data=0x54
+# [1475000] FIFO_A[4] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[6] Write: data=0x57
+# [1505000] FIFO_A[7] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[0] Write: data=0x61
+# [1675000] FIFO_A[1] Write: data=0x62
+# [1685000] FIFO_A[2] Write: data=0x63
+# [1695000] FIFO_A[3] Write: data=0x64
+# [1705000] FIFO_A[4] Write: data=0x65
+# [1715000] FIFO_A[5] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[7] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[0] Write: data=0x71
+# [1905000] FIFO_A[1] Write: data=0x72
+# [1915000] FIFO_A[2] Write: data=0x73
+# [1925000] FIFO_A[3] Write: data=0x74
+# [1935000] FIFO_A[4] Write: data=0x75
+# [1945000] FIFO_A[5] Write: data=0x76
+# [1955000] FIFO_A[6] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x02, result=0x000000
+#   MAC[2]: A=0x03, result=0x000000
+#   MAC[3]: A=0x04, result=0x000000
+#   MAC[4]: A=0x05, result=0x000000
+#   MAC[5]: A=0x06, result=0x000000
+#   MAC[6]: A=0x07, result=0x000000
+#   MAC[7]: A=0x08, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x11, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x13, result=0x000000
+#   MAC[3]: A=0x14, result=0x000000
+#   MAC[4]: A=0x15, result=0x000000
+#   MAC[5]: A=0x16, result=0x000000
+#   MAC[6]: A=0x17, result=0x000000
+#   MAC[7]: A=0x18, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x21, result=0x000923
+#   MAC[1]: A=0x22, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x24, result=0x000000
+#   MAC[4]: A=0x25, result=0x000000
+#   MAC[5]: A=0x26, result=0x000000
+#   MAC[6]: A=0x27, result=0x000000
+#   MAC[7]: A=0x28, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x31, result=0x001a06
+#   MAC[1]: A=0x32, result=0x001a56
+#   MAC[2]: A=0x33, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x35, result=0x000000
+#   MAC[5]: A=0x36, result=0x000000
+#   MAC[6]: A=0x37, result=0x000000
+#   MAC[7]: A=0x38, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x41, result=0x00334a
+#   MAC[1]: A=0x42, result=0x0033ec
+#   MAC[2]: A=0x43, result=0x002b89
+#   MAC[3]: A=0x44, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x46, result=0x000000
+#   MAC[6]: A=0x47, result=0x000000
+#   MAC[7]: A=0x48, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x51, result=0x00550f
+#   MAC[1]: A=0x52, result=0x0055f4
+#   MAC[2]: A=0x53, result=0x004dd2
+#   MAC[3]: A=0x54, result=0x003cbc
+#   MAC[4]: A=0x55, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x57, result=0x000000
+#   MAC[7]: A=0x58, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x61, result=0x007f75
+#   MAC[1]: A=0x62, result=0x00808e
+#   MAC[2]: A=0x63, result=0x00789e
+#   MAC[3]: A=0x64, result=0x0067b8
+#   MAC[4]: A=0x65, result=0x004def
+#   MAC[5]: A=0x66, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x68, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# [2315000] MAC Enabled (count=7)
+#   MAC[0]: A=0x71, result=0x00b29c
+#   MAC[1]: A=0x72, result=0x00b3da
+#   MAC[2]: A=0x73, result=0x00ac0d
+#   MAC[3]: A=0x74, result=0x009b48
+#   MAC[4]: A=0x75, result=0x00819e
+#   MAC[5]: A=0x76, result=0x005f22
+#   MAC[6]: A=0x77, result=0x0033e7
+#   MAC[7]: A=0x78, result=0x000000
+#   B=0x88
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[1] Write: data=0x02
+# [2395000] FIFO_A[2] Write: data=0x03
+# [2405000] FIFO_A[3] Write: data=0x04
+# [2415000] FIFO_A[4] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x00eea4, Expected 0x000008 (Diff: 61084)
+# [FAIL] c[1]: Got 0x012c88, Expected 0x000010 (Diff: 76920)
+# [FAIL] c[2]: Got 0x0161fc, Expected 0x000018 (Diff: 90596)
+# [FAIL] c[3]: Got 0x018f10, Expected 0x000020 (Diff: 102128)
+# [FAIL] c[4]: Got 0x01b3d4, Expected 0x000028 (Diff: 111532)
+# [FAIL] c[5]: Got 0x01d058, Expected 0x000030 (Diff: 118824)
+# [FAIL] c[6]: Got 0x01e4ac, Expected 0x000038 (Diff: 124020)
+# [FAIL] c[7]: Got 0x01f0e0, Expected 0x000040 (Diff: 127136)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[5] Write: data=0x06
+# [2435000] FIFO_A[6] Write: data=0x07
+# [2445000] FIFO_A[7] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[0] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(150)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 150
+vlog -sv mem_controller.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:56:26 on Feb 05,2026
+# vlog -reportprogress 300 -sv mem_controller.sv 
+# -- Compiling module mem_controller
+# ** Warning: mem_controller.sv(17): (vlog-13314) Defaulting port 'fifo_a_full' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	mem_controller
+# End time: 16:56:26 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+
+restart -f
+run -all
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.mem_controller
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x000008 (8)
+#   c[1] = 0x000010 (16)
+#   c[2] = 0x000018 (24)
+#   c[3] = 0x000020 (32)
+#   c[4] = 0x000028 (40)
+#   c[5] = 0x000030 (48)
+#   c[6] = 0x000038 (56)
+#   c[7] = 0x000040 (64)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x22, result=0x000000
+#   MAC[3]: A=0x32, result=0x000000
+#   MAC[4]: A=0x42, result=0x000000
+#   MAC[5]: A=0x52, result=0x000000
+#   MAC[6]: A=0x62, result=0x000000
+#   MAC[7]: A=0x72, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x13, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x33, result=0x000000
+#   MAC[4]: A=0x43, result=0x000000
+#   MAC[5]: A=0x53, result=0x000000
+#   MAC[6]: A=0x63, result=0x000000
+#   MAC[7]: A=0x73, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x14, result=0x0012b8
+#   MAC[2]: A=0x24, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x44, result=0x000000
+#   MAC[5]: A=0x54, result=0x000000
+#   MAC[6]: A=0x64, result=0x000000
+#   MAC[7]: A=0x74, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x15, result=0x001cf4
+#   MAC[2]: A=0x25, result=0x0023eb
+#   MAC[3]: A=0x35, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x55, result=0x000000
+#   MAC[6]: A=0x65, result=0x000000
+#   MAC[7]: A=0x75, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x16, result=0x0027c8
+#   MAC[2]: A=0x26, result=0x0036da
+#   MAC[3]: A=0x36, result=0x00351e
+#   MAC[4]: A=0x46, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x66, result=0x000000
+#   MAC[7]: A=0x76, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x17, result=0x003336
+#   MAC[2]: A=0x27, result=0x004a72
+#   MAC[3]: A=0x37, result=0x0050c0
+#   MAC[4]: A=0x47, result=0x004651
+#   MAC[5]: A=0x57, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x77, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# [2315000] MAC Enabled (count=7)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x003f40
+#   MAC[2]: A=0x28, result=0x005eb5
+#   MAC[3]: A=0x38, result=0x006d1c
+#   MAC[4]: A=0x48, result=0x006aa6
+#   MAC[5]: A=0x58, result=0x005784
+#   MAC[6]: A=0x68, result=0x0033e7
+#   MAC[7]: A=0x78, result=0x000000
+#   B=0x88
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2395000] FIFO_A[0] Write: data=0x03
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x0012cc, Expected 0x000008 (Diff: 4804)
+# [FAIL] c[1]: Got 0x0058a8, Expected 0x000010 (Diff: 22680)
+# [FAIL] c[2]: Got 0x009dfd, Expected 0x000018 (Diff: 40421)
+# [FAIL] c[3]: Got 0x00e2cc, Expected 0x000020 (Diff: 58028)
+# [FAIL] c[4]: Got 0x012716, Expected 0x000028 (Diff: 75502)
+# [FAIL] c[5]: Got 0x016adc, Expected 0x000030 (Diff: 92844)
+# [FAIL] c[6]: Got 0x01ae1f, Expected 0x000038 (Diff: 110055)
+# [FAIL] c[7]: Got 0x01f0e0, Expected 0x000040 (Diff: 127136)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(150)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 150
+vlog -sv matrix_vector_mult_tb.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:59:25 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_tb.sv 
+# -- Compiling module matrix_vector_mult_tb
+# 
+# Top level modules:
+# 	matrix_vector_mult_tb
+# End time: 16:59:26 on Feb 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+
+restart -f
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matrix_vector_mult_tb
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x22, result=0x000000
+#   MAC[3]: A=0x32, result=0x000000
+#   MAC[4]: A=0x42, result=0x000000
+#   MAC[5]: A=0x52, result=0x000000
+#   MAC[6]: A=0x62, result=0x000000
+#   MAC[7]: A=0x72, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x13, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x33, result=0x000000
+#   MAC[4]: A=0x43, result=0x000000
+#   MAC[5]: A=0x53, result=0x000000
+#   MAC[6]: A=0x63, result=0x000000
+#   MAC[7]: A=0x73, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x14, result=0x0012b8
+#   MAC[2]: A=0x24, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x44, result=0x000000
+#   MAC[5]: A=0x54, result=0x000000
+#   MAC[6]: A=0x64, result=0x000000
+#   MAC[7]: A=0x74, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x15, result=0x001cf4
+#   MAC[2]: A=0x25, result=0x0023eb
+#   MAC[3]: A=0x35, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x55, result=0x000000
+#   MAC[6]: A=0x65, result=0x000000
+#   MAC[7]: A=0x75, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x16, result=0x0027c8
+#   MAC[2]: A=0x26, result=0x0036da
+#   MAC[3]: A=0x36, result=0x00351e
+#   MAC[4]: A=0x46, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x66, result=0x000000
+#   MAC[7]: A=0x76, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x17, result=0x003336
+#   MAC[2]: A=0x27, result=0x004a72
+#   MAC[3]: A=0x37, result=0x0050c0
+#   MAC[4]: A=0x47, result=0x004651
+#   MAC[5]: A=0x57, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x77, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# [2315000] MAC Enabled (count=7)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x003f40
+#   MAC[2]: A=0x28, result=0x005eb5
+#   MAC[3]: A=0x38, result=0x006d1c
+#   MAC[4]: A=0x48, result=0x006aa6
+#   MAC[5]: A=0x58, result=0x005784
+#   MAC[6]: A=0x68, result=0x0033e7
+#   MAC[7]: A=0x78, result=0x000000
+#   B=0x88
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2395000] FIFO_A[0] Write: data=0x03
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [PASS] c[0]: Got 0x0012cc, Expected 0x0012cc
+# [FAIL] c[1]: Got 0x0058a8, Expected 0x00550c (Diff: 924)
+# [FAIL] c[2]: Got 0x009dfd, Expected 0x00974c (Diff: 1713)
+# [FAIL] c[3]: Got 0x00e2cc, Expected 0x00d98c (Diff: 2368)
+# [FAIL] c[4]: Got 0x012716, Expected 0x011bcc (Diff: 2890)
+# [FAIL] c[5]: Got 0x016adc, Expected 0x015e0c (Diff: 3280)
+# [FAIL] c[6]: Got 0x01ae1f, Expected 0x01a04c (Diff: 3539)
+# [FAIL] c[7]: Got 0x01f0e0, Expected 0x01e28c (Diff: 3668)
+# ============================================
+# Test Summary: 1 PASS, 7 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[7]/mac_inst/b_in}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[6]/mac_inst/*}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[5]/mac_inst/b_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[5]/mac_inst/b_out}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[7]/mac_inst/b_out}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[6]/mac_inst/b_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[6]/mac_inst/b_out}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[4]/mac_inst/b_out} \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[4]/mac_inst/b_in}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[3]/mac_inst/*}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[2]/mac_inst/b_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[2]/mac_inst/b_out}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[1]/mac_inst/b_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[1]/mac_inst/b_out}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[0]/mac_inst/b_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[0]/mac_inst/b_out}
+restart
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x22, result=0x000000
+#   MAC[3]: A=0x32, result=0x000000
+#   MAC[4]: A=0x42, result=0x000000
+#   MAC[5]: A=0x52, result=0x000000
+#   MAC[6]: A=0x62, result=0x000000
+#   MAC[7]: A=0x72, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x13, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x33, result=0x000000
+#   MAC[4]: A=0x43, result=0x000000
+#   MAC[5]: A=0x53, result=0x000000
+#   MAC[6]: A=0x63, result=0x000000
+#   MAC[7]: A=0x73, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x14, result=0x0012b8
+#   MAC[2]: A=0x24, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x44, result=0x000000
+#   MAC[5]: A=0x54, result=0x000000
+#   MAC[6]: A=0x64, result=0x000000
+#   MAC[7]: A=0x74, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x15, result=0x001cf4
+#   MAC[2]: A=0x25, result=0x0023eb
+#   MAC[3]: A=0x35, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x55, result=0x000000
+#   MAC[6]: A=0x65, result=0x000000
+#   MAC[7]: A=0x75, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x16, result=0x0027c8
+#   MAC[2]: A=0x26, result=0x0036da
+#   MAC[3]: A=0x36, result=0x00351e
+#   MAC[4]: A=0x46, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x66, result=0x000000
+#   MAC[7]: A=0x76, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x17, result=0x003336
+#   MAC[2]: A=0x27, result=0x004a72
+#   MAC[3]: A=0x37, result=0x0050c0
+#   MAC[4]: A=0x47, result=0x004651
+#   MAC[5]: A=0x57, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x77, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# [2315000] MAC Enabled (count=7)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x003f40
+#   MAC[2]: A=0x28, result=0x005eb5
+#   MAC[3]: A=0x38, result=0x006d1c
+#   MAC[4]: A=0x48, result=0x006aa6
+#   MAC[5]: A=0x58, result=0x005784
+#   MAC[6]: A=0x68, result=0x0033e7
+#   MAC[7]: A=0x78, result=0x000000
+#   B=0x88
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2395000] FIFO_A[0] Write: data=0x03
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [PASS] c[0]: Got 0x0012cc, Expected 0x0012cc
+# [FAIL] c[1]: Got 0x0058a8, Expected 0x00550c (Diff: 924)
+# [FAIL] c[2]: Got 0x009dfd, Expected 0x00974c (Diff: 1713)
+# [FAIL] c[3]: Got 0x00e2cc, Expected 0x00d98c (Diff: 2368)
+# [FAIL] c[4]: Got 0x012716, Expected 0x011bcc (Diff: 2890)
+# [FAIL] c[5]: Got 0x016adc, Expected 0x015e0c (Diff: 3280)
+# [FAIL] c[6]: Got 0x01ae1f, Expected 0x01a04c (Diff: 3539)
+# [FAIL] c[7]: Got 0x01f0e0, Expected 0x01e28c (Diff: 3668)
+# ============================================
+# Test Summary: 1 PASS, 7 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[0]/mac_inst/a_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[1]/mac_inst/a_in}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[2]/mac_inst/*}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[2]/mac_inst/a_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[3]/mac_inst/a_in}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[4]/mac_inst/*}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[4]/mac_inst/a_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[5]/mac_inst/a_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[6]/mac_inst/a_in}
+add wave -position insertpoint  \
+{sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[7]/mac_inst/a_in}
+restart
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x22, result=0x000000
+#   MAC[3]: A=0x32, result=0x000000
+#   MAC[4]: A=0x42, result=0x000000
+#   MAC[5]: A=0x52, result=0x000000
+#   MAC[6]: A=0x62, result=0x000000
+#   MAC[7]: A=0x72, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x13, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x33, result=0x000000
+#   MAC[4]: A=0x43, result=0x000000
+#   MAC[5]: A=0x53, result=0x000000
+#   MAC[6]: A=0x63, result=0x000000
+#   MAC[7]: A=0x73, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x14, result=0x0012b8
+#   MAC[2]: A=0x24, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x44, result=0x000000
+#   MAC[5]: A=0x54, result=0x000000
+#   MAC[6]: A=0x64, result=0x000000
+#   MAC[7]: A=0x74, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x15, result=0x001cf4
+#   MAC[2]: A=0x25, result=0x0023eb
+#   MAC[3]: A=0x35, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x55, result=0x000000
+#   MAC[6]: A=0x65, result=0x000000
+#   MAC[7]: A=0x75, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x16, result=0x0027c8
+#   MAC[2]: A=0x26, result=0x0036da
+#   MAC[3]: A=0x36, result=0x00351e
+#   MAC[4]: A=0x46, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x66, result=0x000000
+#   MAC[7]: A=0x76, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x17, result=0x003336
+#   MAC[2]: A=0x27, result=0x004a72
+#   MAC[3]: A=0x37, result=0x0050c0
+#   MAC[4]: A=0x47, result=0x004651
+#   MAC[5]: A=0x57, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x77, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# [2315000] MAC Enabled (count=7)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x003f40
+#   MAC[2]: A=0x28, result=0x005eb5
+#   MAC[3]: A=0x38, result=0x006d1c
+#   MAC[4]: A=0x48, result=0x006aa6
+#   MAC[5]: A=0x58, result=0x005784
+#   MAC[6]: A=0x68, result=0x0033e7
+#   MAC[7]: A=0x78, result=0x000000
+#   B=0x88
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2395000] FIFO_A[0] Write: data=0x03
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [PASS] c[0]: Got 0x0012cc, Expected 0x0012cc
+# [FAIL] c[1]: Got 0x0058a8, Expected 0x00550c (Diff: 924)
+# [FAIL] c[2]: Got 0x009dfd, Expected 0x00974c (Diff: 1713)
+# [FAIL] c[3]: Got 0x00e2cc, Expected 0x00d98c (Diff: 2368)
+# [FAIL] c[4]: Got 0x012716, Expected 0x011bcc (Diff: 2890)
+# [FAIL] c[5]: Got 0x016adc, Expected 0x015e0c (Diff: 3280)
+# [FAIL] c[6]: Got 0x01ae1f, Expected 0x01a04c (Diff: 3539)
+# [FAIL] c[7]: Got 0x01f0e0, Expected 0x01e28c (Diff: 3668)
+# ============================================
+# Test Summary: 1 PASS, 7 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+vlog -sv mac_array.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:31:07 on Feb 05,2026
+# vlog -reportprogress 300 -sv mac_array.sv 
+# -- Compiling module mac_array
+# ** Warning: mac_array.sv(7): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	mac_array
+# End time: 21:31:08 on Feb 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+vlog -sv matrix_vector_mult_top.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:32:04 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_top.sv 
+# -- Compiling module matrix_vector_mult_top
+# 
+# Top level modules:
+# 	matrix_vector_mult_top
+# End time: 21:32:05 on Feb 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+ vsim -gui work.matrix_vector_mult_tb -L altera_mf -voptargs="+acc"
+# End time: 21:32:40 on Feb 05,2026, Elapsed time: 4:48:13
+# Errors: 0, Warnings: 1
+# vsim -gui work.matrix_vector_mult_tb -L altera_mf -voptargs=""+acc"" 
+# Start time: 21:32:41 on Feb 05,2026
+# Loading sv_std.std
+# Loading work.matrix_vector_mult_tb
+# Loading work.matrix_vector_mult_top
+# Loading work.mem_wrapper
+# Loading work.rom
+# Loading altera_mf.altsyncram
+# Loading work.mem_controller
+# Loading work.fifo
+# Loading work.mac_array
+# Loading altera_mf.altsyncram_body
+# Loading altera_mf.ALTERA_DEVICE_FAMILIES
+# Loading altera_mf.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.mac_unit
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x00, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x02, result=0x000082
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x03, result=0x000188
+#   MAC[1]: A=0x12, result=0x0008a2
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x04, result=0x000314
+#   MAC[1]: A=0x13, result=0x0011d8
+#   MAC[2]: A=0x22, result=0x0010c2
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x05, result=0x000528
+#   MAC[1]: A=0x14, result=0x001ba4
+#   MAC[2]: A=0x23, result=0x002228
+#   MAC[3]: A=0x32, result=0x0018e2
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x06, result=0x0007c6
+#   MAC[1]: A=0x15, result=0x002608
+#   MAC[2]: A=0x24, result=0x003434
+#   MAC[3]: A=0x33, result=0x003278
+#   MAC[4]: A=0x42, result=0x002102
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x87
+# [2315000] MAC Enabled (count=8)
+#   MAC[0]: A=0x07, result=0x000af0
+#   MAC[1]: A=0x16, result=0x003106
+#   MAC[2]: A=0x25, result=0x0046e8
+#   MAC[3]: A=0x34, result=0x004cc4
+#   MAC[4]: A=0x43, result=0x0042c8
+#   MAC[5]: A=0x52, result=0x002922
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x88
+# [2325000] MAC Enabled (count=9)
+#   MAC[0]: A=0x08, result=0x000ea8
+#   MAC[1]: A=0x17, result=0x003ca0
+#   MAC[2]: A=0x26, result=0x005a46
+#   MAC[3]: A=0x35, result=0x0067c8
+#   MAC[4]: A=0x44, result=0x006554
+#   MAC[5]: A=0x53, result=0x005318
+#   MAC[6]: A=0x62, result=0x003142
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x88
+# [2335000] MAC Enabled (count=10)
+#   MAC[0]: A=0x08, result=0x0012e8
+#   MAC[1]: A=0x18, result=0x0048d8
+#   MAC[2]: A=0x27, result=0x006e50
+#   MAC[3]: A=0x36, result=0x008386
+#   MAC[4]: A=0x45, result=0x0088a8
+#   MAC[5]: A=0x54, result=0x007de4
+#   MAC[6]: A=0x63, result=0x006368
+#   MAC[7]: A=0x72, result=0x003962
+#   B=0x88
+# [2345000] MAC Enabled (count=11)
+#   MAC[0]: A=0x08, result=0x001728
+#   MAC[1]: A=0x18, result=0x005598
+#   MAC[2]: A=0x28, result=0x008308
+#   MAC[3]: A=0x37, result=0x00a000
+#   MAC[4]: A=0x46, result=0x00acc6
+#   MAC[5]: A=0x55, result=0x00a988
+#   MAC[6]: A=0x64, result=0x009674
+#   MAC[7]: A=0x73, result=0x0073b8
+#   B=0x88
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2355000] MAC Enabled (count=12)
+#   MAC[0]: A=0x08, result=0x001b68
+#   MAC[1]: A=0x18, result=0x006258
+#   MAC[2]: A=0x28, result=0x009848
+#   MAC[3]: A=0x38, result=0x00bd38
+#   MAC[4]: A=0x47, result=0x00d1b0
+#   MAC[5]: A=0x56, result=0x00d606
+#   MAC[6]: A=0x65, result=0x00ca68
+#   MAC[7]: A=0x74, result=0x00af04
+#   B=0x88
+# [2365000] MAC Enabled (count=13)
+#   MAC[0]: A=0x08, result=0x001fa8
+#   MAC[1]: A=0x18, result=0x006f18
+#   MAC[2]: A=0x28, result=0x00ad88
+#   MAC[3]: A=0x38, result=0x00daf8
+#   MAC[4]: A=0x48, result=0x00f768
+#   MAC[5]: A=0x57, result=0x010360
+#   MAC[6]: A=0x66, result=0x00ff46
+#   MAC[7]: A=0x75, result=0x00eb48
+#   B=0x88
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2375000] MAC Enabled (count=14)
+#   MAC[0]: A=0x08, result=0x0023e8
+#   MAC[1]: A=0x18, result=0x007bd8
+#   MAC[2]: A=0x28, result=0x00c2c8
+#   MAC[3]: A=0x38, result=0x00f8b8
+#   MAC[4]: A=0x48, result=0x011da8
+#   MAC[5]: A=0x58, result=0x013198
+#   MAC[6]: A=0x67, result=0x013510
+#   MAC[7]: A=0x76, result=0x012886
+#   B=0x88
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2385000] MAC Enabled (count=15)
+#   MAC[0]: A=0x08, result=0x002828
+#   MAC[1]: A=0x18, result=0x008898
+#   MAC[2]: A=0x28, result=0x00d808
+#   MAC[3]: A=0x38, result=0x011678
+#   MAC[4]: A=0x48, result=0x0143e8
+#   MAC[5]: A=0x58, result=0x016058
+#   MAC[6]: A=0x68, result=0x016bc8
+#   MAC[7]: A=0x77, result=0x0166c0
+#   B=0x88
+# [2385000] State: FINISH
+# [2395000] FIFO_A[0] Write: data=0x03
+# 
+# [2395000] Computation complete!
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x002c68, Expected 0x0012cc (Diff: 6556)
+# [FAIL] c[1]: Got 0x00a218, Expected 0x00550c (Diff: 19724)
+# [FAIL] c[2]: Got 0x0117c8, Expected 0x00974c (Diff: 32892)
+# [FAIL] c[3]: Got 0x018d78, Expected 0x00d98c (Diff: 46060)
+# [FAIL] c[4]: Got 0x020328, Expected 0x011bcc (Diff: 59228)
+# [FAIL] c[5]: Got 0x0278d8, Expected 0x015e0c (Diff: 72396)
+# [FAIL] c[6]: Got 0x02ee88, Expected 0x01a04c (Diff: 85564)
+# [FAIL] c[7]: Got 0x036438, Expected 0x01e28c (Diff: 98732)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# [2625000] FIFO_A[1] Write: data=0x13
+# [2635000] FIFO_A[1] Write: data=0x14
+# [2645000] FIFO_A[1] Write: data=0x15
+# [2655000] FIFO_A[1] Write: data=0x16
+# [2665000] FIFO_A[1] Write: data=0x17
+# [2675000] FIFO_A[1] Write: data=0x18
+# [2685000] Memory Read: addr=0x00000002
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2695 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+vlog -sv mac_array.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:33:31 on Feb 05,2026
+# vlog -reportprogress 300 -sv mac_array.sv 
+# -- Compiling module mac_array
+# ** Warning: mac_array.sv(7): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	mac_array
+# End time: 21:33:31 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+vlog -sv matrix_vector_mult_top.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:33:34 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_top.sv 
+# -- Compiling module matrix_vector_mult_top
+# 
+# Top level modules:
+# 	matrix_vector_mult_top
+# End time: 21:33:34 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matrix_vector_mult_top
+# Loading work.mac_array
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'mac_arr'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/mac_arr File: matrix_vector_mult_top.sv Line: 231
+# ** Warning: (vsim-3722) matrix_vector_mult_top.sv(231): [TFMPC] - Missing connection for port 'en_out'.
+vlog -sv mac_array.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:35:44 on Feb 05,2026
+# vlog -reportprogress 300 -sv mac_array.sv 
+# -- Compiling module mac_array
+# ** Warning: mac_array.sv(7): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	mac_array
+# End time: 21:35:44 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.mac_array
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'mac_arr'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/mac_arr File: matrix_vector_mult_top.sv Line: 231
+# ** Warning: (vsim-3722) matrix_vector_mult_top.sv(231): [TFMPC] - Missing connection for port 'en_out'.
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x12, result=0x000000
+#   MAC[2]: A=0x22, result=0x000000
+#   MAC[3]: A=0x32, result=0x000000
+#   MAC[4]: A=0x42, result=0x000000
+#   MAC[5]: A=0x52, result=0x000000
+#   MAC[6]: A=0x62, result=0x000000
+#   MAC[7]: A=0x72, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x13, result=0x000912
+#   MAC[2]: A=0x23, result=0x000000
+#   MAC[3]: A=0x33, result=0x000000
+#   MAC[4]: A=0x43, result=0x000000
+#   MAC[5]: A=0x53, result=0x000000
+#   MAC[6]: A=0x63, result=0x000000
+#   MAC[7]: A=0x73, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x14, result=0x0012b8
+#   MAC[2]: A=0x24, result=0x0011a3
+#   MAC[3]: A=0x34, result=0x000000
+#   MAC[4]: A=0x44, result=0x000000
+#   MAC[5]: A=0x54, result=0x000000
+#   MAC[6]: A=0x64, result=0x000000
+#   MAC[7]: A=0x74, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x15, result=0x001cf4
+#   MAC[2]: A=0x25, result=0x0023eb
+#   MAC[3]: A=0x35, result=0x001a34
+#   MAC[4]: A=0x45, result=0x000000
+#   MAC[5]: A=0x55, result=0x000000
+#   MAC[6]: A=0x65, result=0x000000
+#   MAC[7]: A=0x75, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x16, result=0x0027c8
+#   MAC[2]: A=0x26, result=0x0036da
+#   MAC[3]: A=0x36, result=0x00351e
+#   MAC[4]: A=0x46, result=0x0022c5
+#   MAC[5]: A=0x56, result=0x000000
+#   MAC[6]: A=0x66, result=0x000000
+#   MAC[7]: A=0x76, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x17, result=0x003336
+#   MAC[2]: A=0x27, result=0x004a72
+#   MAC[3]: A=0x37, result=0x0050c0
+#   MAC[4]: A=0x47, result=0x004651
+#   MAC[5]: A=0x57, result=0x002b56
+#   MAC[6]: A=0x67, result=0x000000
+#   MAC[7]: A=0x77, result=0x000000
+#   B=0x87
+# [2305000] State: FINISH
+# 
+# [2315000] Computation complete!
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2395000] FIFO_A[0] Write: data=0x03
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x000e8c, Expected 0x0012cc (Diff: -1088)
+# [FAIL] c[1]: Got 0x004be8, Expected 0x00550c (Diff: -2340)
+# [FAIL] c[2]: Got 0x0088bd, Expected 0x00974c (Diff: -3727)
+# [FAIL] c[3]: Got 0x00c50c, Expected 0x00d98c (Diff: -5248)
+# [FAIL] c[4]: Got 0x0100d6, Expected 0x011bcc (Diff: -6902)
+# [FAIL] c[5]: Got 0x013c1c, Expected 0x015e0c (Diff: -8688)
+# [FAIL] c[6]: Got 0x0176df, Expected 0x01a04c (Diff: -10605)
+# [FAIL] c[7]: Got 0x01b120, Expected 0x01e28c (Diff: -12652)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2615 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+vlog -sv matrix_vector_mult_top.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:38:34 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_top.sv 
+# -- Compiling module matrix_vector_mult_top
+# 
+# Top level modules:
+# 	matrix_vector_mult_top
+# End time: 21:38:35 on Feb 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart -f
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matrix_vector_mult_top
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'mac_arr'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/mac_arr File: matrix_vector_mult_top.sv Line: 231
+# ** Warning: (vsim-3722) matrix_vector_mult_top.sv(231): [TFMPC] - Missing connection for port 'en_out'.
+vlog -sv mac_array.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:39:43 on Feb 05,2026
+# vlog -reportprogress 300 -sv mac_array.sv 
+# -- Compiling module mac_array
+# ** Warning: mac_array.sv(7): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	mac_array
+# End time: 21:39:43 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.mac_array
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'mac_arr'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/mac_arr File: matrix_vector_mult_top.sv Line: 231
+# ** Warning: (vsim-3722) matrix_vector_mult_top.sv(231): [TFMPC] - Missing connection for port 'en_out'.
+vlog -sv mac_array.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:40:41 on Feb 05,2026
+# vlog -reportprogress 300 -sv mac_array.sv 
+# -- Compiling module mac_array
+# ** Warning: mac_array.sv(7): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	mac_array
+# End time: 21:40:41 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.mac_array
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'mac_arr'.  Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/mac_arr File: matrix_vector_mult_top.sv Line: 231
+# ** Warning: (vsim-3722) matrix_vector_mult_top.sv(231): [TFMPC] - Missing connection for port 'en_out'.
+vlog -sv matrix_vector_mult_top.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:42:09 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_top.sv 
+# -- Compiling module matrix_vector_mult_top
+# 
+# Top level modules:
+# 	matrix_vector_mult_top
+# End time: 21:42:09 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matrix_vector_mult_top
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x00, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x02, result=0x000082
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x03, result=0x000188
+#   MAC[1]: A=0x12, result=0x0008a2
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x04, result=0x000314
+#   MAC[1]: A=0x13, result=0x0011d8
+#   MAC[2]: A=0x22, result=0x0010c2
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x05, result=0x000528
+#   MAC[1]: A=0x14, result=0x001ba4
+#   MAC[2]: A=0x23, result=0x002228
+#   MAC[3]: A=0x32, result=0x0018e2
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x06, result=0x0007c6
+#   MAC[1]: A=0x15, result=0x002608
+#   MAC[2]: A=0x24, result=0x003434
+#   MAC[3]: A=0x33, result=0x003278
+#   MAC[4]: A=0x42, result=0x002102
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x87
+# [2315000] MAC Enabled (count=8)
+#   MAC[0]: A=0x07, result=0x000af0
+#   MAC[1]: A=0x16, result=0x003106
+#   MAC[2]: A=0x25, result=0x0046e8
+#   MAC[3]: A=0x34, result=0x004cc4
+#   MAC[4]: A=0x43, result=0x0042c8
+#   MAC[5]: A=0x52, result=0x002922
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x88
+# [2325000] MAC Enabled (count=9)
+#   MAC[0]: A=0x08, result=0x000ea8
+#   MAC[1]: A=0x17, result=0x003ca0
+#   MAC[2]: A=0x26, result=0x005a46
+#   MAC[3]: A=0x35, result=0x0067c8
+#   MAC[4]: A=0x44, result=0x006554
+#   MAC[5]: A=0x53, result=0x005318
+#   MAC[6]: A=0x62, result=0x003142
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x88
+# [2335000] MAC Enabled (count=10)
+#   MAC[0]: A=0x08, result=0x0012e8
+#   MAC[1]: A=0x18, result=0x0048d8
+#   MAC[2]: A=0x27, result=0x006e50
+#   MAC[3]: A=0x36, result=0x008386
+#   MAC[4]: A=0x45, result=0x0088a8
+#   MAC[5]: A=0x54, result=0x007de4
+#   MAC[6]: A=0x63, result=0x006368
+#   MAC[7]: A=0x72, result=0x003962
+#   B=0x88
+# [2345000] MAC Enabled (count=11)
+#   MAC[0]: A=0x08, result=0x001728
+#   MAC[1]: A=0x18, result=0x005598
+#   MAC[2]: A=0x28, result=0x008308
+#   MAC[3]: A=0x37, result=0x00a000
+#   MAC[4]: A=0x46, result=0x00acc6
+#   MAC[5]: A=0x55, result=0x00a988
+#   MAC[6]: A=0x64, result=0x009674
+#   MAC[7]: A=0x73, result=0x0073b8
+#   B=0x88
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2355000] MAC Enabled (count=12)
+#   MAC[0]: A=0x08, result=0x001b68
+#   MAC[1]: A=0x18, result=0x006258
+#   MAC[2]: A=0x28, result=0x009848
+#   MAC[3]: A=0x38, result=0x00bd38
+#   MAC[4]: A=0x47, result=0x00d1b0
+#   MAC[5]: A=0x56, result=0x00d606
+#   MAC[6]: A=0x65, result=0x00ca68
+#   MAC[7]: A=0x74, result=0x00af04
+#   B=0x88
+# [2365000] MAC Enabled (count=13)
+#   MAC[0]: A=0x08, result=0x001fa8
+#   MAC[1]: A=0x18, result=0x006f18
+#   MAC[2]: A=0x28, result=0x00ad88
+#   MAC[3]: A=0x38, result=0x00daf8
+#   MAC[4]: A=0x48, result=0x00f768
+#   MAC[5]: A=0x57, result=0x010360
+#   MAC[6]: A=0x66, result=0x00ff46
+#   MAC[7]: A=0x75, result=0x00eb48
+#   B=0x88
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2375000] MAC Enabled (count=14)
+#   MAC[0]: A=0x08, result=0x0023e8
+#   MAC[1]: A=0x18, result=0x007bd8
+#   MAC[2]: A=0x28, result=0x00c2c8
+#   MAC[3]: A=0x38, result=0x00f8b8
+#   MAC[4]: A=0x48, result=0x011da8
+#   MAC[5]: A=0x58, result=0x013198
+#   MAC[6]: A=0x67, result=0x013510
+#   MAC[7]: A=0x76, result=0x012886
+#   B=0x88
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2385000] MAC Enabled (count=15)
+#   MAC[0]: A=0x08, result=0x002828
+#   MAC[1]: A=0x18, result=0x008898
+#   MAC[2]: A=0x28, result=0x00d808
+#   MAC[3]: A=0x38, result=0x011678
+#   MAC[4]: A=0x48, result=0x0143e8
+#   MAC[5]: A=0x58, result=0x016058
+#   MAC[6]: A=0x68, result=0x016bc8
+#   MAC[7]: A=0x77, result=0x0166c0
+#   B=0x88
+# [2385000] State: FINISH
+# [2395000] FIFO_A[0] Write: data=0x03
+# 
+# [2395000] Computation complete!
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x002c68, Expected 0x0012cc (Diff: 6556)
+# [FAIL] c[1]: Got 0x00a218, Expected 0x00550c (Diff: 19724)
+# [FAIL] c[2]: Got 0x0117c8, Expected 0x00974c (Diff: 32892)
+# [FAIL] c[3]: Got 0x018d78, Expected 0x00d98c (Diff: 46060)
+# [FAIL] c[4]: Got 0x020328, Expected 0x011bcc (Diff: 59228)
+# [FAIL] c[5]: Got 0x0278d8, Expected 0x015e0c (Diff: 72396)
+# [FAIL] c[6]: Got 0x02ee88, Expected 0x01a04c (Diff: 85564)
+# [FAIL] c[7]: Got 0x036438, Expected 0x01e28c (Diff: 98732)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# [2625000] FIFO_A[1] Write: data=0x13
+# [2635000] FIFO_A[1] Write: data=0x14
+# [2645000] FIFO_A[1] Write: data=0x15
+# [2655000] FIFO_A[1] Write: data=0x16
+# [2665000] FIFO_A[1] Write: data=0x17
+# [2675000] FIFO_A[1] Write: data=0x18
+# [2685000] Memory Read: addr=0x00000002
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2695 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[0]/mac_inst/*}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[1]/mac_inst/*}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[2]/mac_inst/*}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[3]/mac_inst/*}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[4]/mac_inst/*}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[5]/mac_inst/*}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[6]/mac_inst/*}
+add wave -position insertpoint {sim:/matrix_vector_mult_tb/dut/mac_arr/mac_gen[7]/mac_inst/*}
+restart
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x00, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x02, result=0x000082
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x03, result=0x000188
+#   MAC[1]: A=0x12, result=0x0008a2
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x04, result=0x000314
+#   MAC[1]: A=0x13, result=0x0011d8
+#   MAC[2]: A=0x22, result=0x0010c2
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x05, result=0x000528
+#   MAC[1]: A=0x14, result=0x001ba4
+#   MAC[2]: A=0x23, result=0x002228
+#   MAC[3]: A=0x32, result=0x0018e2
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x06, result=0x0007c6
+#   MAC[1]: A=0x15, result=0x002608
+#   MAC[2]: A=0x24, result=0x003434
+#   MAC[3]: A=0x33, result=0x003278
+#   MAC[4]: A=0x42, result=0x002102
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x87
+# [2315000] MAC Enabled (count=8)
+#   MAC[0]: A=0x07, result=0x000af0
+#   MAC[1]: A=0x16, result=0x003106
+#   MAC[2]: A=0x25, result=0x0046e8
+#   MAC[3]: A=0x34, result=0x004cc4
+#   MAC[4]: A=0x43, result=0x0042c8
+#   MAC[5]: A=0x52, result=0x002922
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x88
+# [2325000] MAC Enabled (count=9)
+#   MAC[0]: A=0x08, result=0x000ea8
+#   MAC[1]: A=0x17, result=0x003ca0
+#   MAC[2]: A=0x26, result=0x005a46
+#   MAC[3]: A=0x35, result=0x0067c8
+#   MAC[4]: A=0x44, result=0x006554
+#   MAC[5]: A=0x53, result=0x005318
+#   MAC[6]: A=0x62, result=0x003142
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x88
+# [2335000] MAC Enabled (count=10)
+#   MAC[0]: A=0x08, result=0x0012e8
+#   MAC[1]: A=0x18, result=0x0048d8
+#   MAC[2]: A=0x27, result=0x006e50
+#   MAC[3]: A=0x36, result=0x008386
+#   MAC[4]: A=0x45, result=0x0088a8
+#   MAC[5]: A=0x54, result=0x007de4
+#   MAC[6]: A=0x63, result=0x006368
+#   MAC[7]: A=0x72, result=0x003962
+#   B=0x88
+# [2345000] MAC Enabled (count=11)
+#   MAC[0]: A=0x08, result=0x001728
+#   MAC[1]: A=0x18, result=0x005598
+#   MAC[2]: A=0x28, result=0x008308
+#   MAC[3]: A=0x37, result=0x00a000
+#   MAC[4]: A=0x46, result=0x00acc6
+#   MAC[5]: A=0x55, result=0x00a988
+#   MAC[6]: A=0x64, result=0x009674
+#   MAC[7]: A=0x73, result=0x0073b8
+#   B=0x88
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2355000] MAC Enabled (count=12)
+#   MAC[0]: A=0x08, result=0x001b68
+#   MAC[1]: A=0x18, result=0x006258
+#   MAC[2]: A=0x28, result=0x009848
+#   MAC[3]: A=0x38, result=0x00bd38
+#   MAC[4]: A=0x47, result=0x00d1b0
+#   MAC[5]: A=0x56, result=0x00d606
+#   MAC[6]: A=0x65, result=0x00ca68
+#   MAC[7]: A=0x74, result=0x00af04
+#   B=0x88
+# [2365000] MAC Enabled (count=13)
+#   MAC[0]: A=0x08, result=0x001fa8
+#   MAC[1]: A=0x18, result=0x006f18
+#   MAC[2]: A=0x28, result=0x00ad88
+#   MAC[3]: A=0x38, result=0x00daf8
+#   MAC[4]: A=0x48, result=0x00f768
+#   MAC[5]: A=0x57, result=0x010360
+#   MAC[6]: A=0x66, result=0x00ff46
+#   MAC[7]: A=0x75, result=0x00eb48
+#   B=0x88
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2375000] MAC Enabled (count=14)
+#   MAC[0]: A=0x08, result=0x0023e8
+#   MAC[1]: A=0x18, result=0x007bd8
+#   MAC[2]: A=0x28, result=0x00c2c8
+#   MAC[3]: A=0x38, result=0x00f8b8
+#   MAC[4]: A=0x48, result=0x011da8
+#   MAC[5]: A=0x58, result=0x013198
+#   MAC[6]: A=0x67, result=0x013510
+#   MAC[7]: A=0x76, result=0x012886
+#   B=0x88
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2385000] MAC Enabled (count=15)
+#   MAC[0]: A=0x08, result=0x002828
+#   MAC[1]: A=0x18, result=0x008898
+#   MAC[2]: A=0x28, result=0x00d808
+#   MAC[3]: A=0x38, result=0x011678
+#   MAC[4]: A=0x48, result=0x0143e8
+#   MAC[5]: A=0x58, result=0x016058
+#   MAC[6]: A=0x68, result=0x016bc8
+#   MAC[7]: A=0x77, result=0x0166c0
+#   B=0x88
+# [2385000] State: FINISH
+# [2395000] FIFO_A[0] Write: data=0x03
+# 
+# [2395000] Computation complete!
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x002c68, Expected 0x0012cc (Diff: 6556)
+# [FAIL] c[1]: Got 0x00a218, Expected 0x00550c (Diff: 19724)
+# [FAIL] c[2]: Got 0x0117c8, Expected 0x00974c (Diff: 32892)
+# [FAIL] c[3]: Got 0x018d78, Expected 0x00d98c (Diff: 46060)
+# [FAIL] c[4]: Got 0x020328, Expected 0x011bcc (Diff: 59228)
+# [FAIL] c[5]: Got 0x0278d8, Expected 0x015e0c (Diff: 72396)
+# [FAIL] c[6]: Got 0x02ee88, Expected 0x01a04c (Diff: 85564)
+# [FAIL] c[7]: Got 0x036438, Expected 0x01e28c (Diff: 98732)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# [2625000] FIFO_A[1] Write: data=0x13
+# [2635000] FIFO_A[1] Write: data=0x14
+# [2645000] FIFO_A[1] Write: data=0x15
+# [2655000] FIFO_A[1] Write: data=0x16
+# [2665000] FIFO_A[1] Write: data=0x17
+# [2675000] FIFO_A[1] Write: data=0x18
+# [2685000] Memory Read: addr=0x00000002
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2695 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+vlog -sv matrix_vector_mult_top.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:47:46 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_top.sv 
+# -- Compiling module matrix_vector_mult_top
+# 
+# Top level modules:
+# 	matrix_vector_mult_top
+# End time: 21:47:46 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matrix_vector_mult_top
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x00, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x12, result=0x000891
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x13, result=0x0011b5
+#   MAC[2]: A=0x22, result=0x0010a1
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x14, result=0x001b6e
+#   MAC[2]: A=0x23, result=0x0021e5
+#   MAC[3]: A=0x32, result=0x0018b1
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x15, result=0x0025be
+#   MAC[2]: A=0x24, result=0x0033ce
+#   MAC[3]: A=0x33, result=0x003215
+#   MAC[4]: A=0x42, result=0x0020c1
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x87
+# [2315000] MAC Enabled (count=8)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x16, result=0x0030a7
+#   MAC[2]: A=0x25, result=0x00465e
+#   MAC[3]: A=0x34, result=0x004c2e
+#   MAC[4]: A=0x43, result=0x004245
+#   MAC[5]: A=0x52, result=0x0028d1
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x88
+# [2325000] MAC Enabled (count=9)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x17, result=0x003c2b
+#   MAC[2]: A=0x26, result=0x005997
+#   MAC[3]: A=0x35, result=0x0066fe
+#   MAC[4]: A=0x44, result=0x00648e
+#   MAC[5]: A=0x53, result=0x005275
+#   MAC[6]: A=0x62, result=0x0030e1
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x88
+# [2335000] MAC Enabled (count=10)
+#   MAC[0]: A=0x08, result=0x0012cc
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x27, result=0x006d7b
+#   MAC[3]: A=0x36, result=0x008287
+#   MAC[4]: A=0x45, result=0x00879e
+#   MAC[5]: A=0x54, result=0x007cee
+#   MAC[6]: A=0x63, result=0x0062a5
+#   MAC[7]: A=0x72, result=0x0038f1
+#   B=0x88
+# [2345000] MAC Enabled (count=11)
+#   MAC[0]: A=0x08, result=0x00170c
+#   MAC[1]: A=0x18, result=0x00550c
+#   MAC[2]: A=0x28, result=0x00820c
+#   MAC[3]: A=0x37, result=0x009ecb
+#   MAC[4]: A=0x46, result=0x00ab77
+#   MAC[5]: A=0x55, result=0x00a83e
+#   MAC[6]: A=0x64, result=0x00954e
+#   MAC[7]: A=0x73, result=0x0072d5
+#   B=0x88
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2355000] MAC Enabled (count=12)
+#   MAC[0]: A=0x08, result=0x001b4c
+#   MAC[1]: A=0x18, result=0x0061cc
+#   MAC[2]: A=0x28, result=0x00974c
+#   MAC[3]: A=0x38, result=0x00bbcc
+#   MAC[4]: A=0x47, result=0x00d01b
+#   MAC[5]: A=0x56, result=0x00d467
+#   MAC[6]: A=0x65, result=0x00c8de
+#   MAC[7]: A=0x74, result=0x00adae
+#   B=0x88
+# [2365000] MAC Enabled (count=13)
+#   MAC[0]: A=0x08, result=0x001f8c
+#   MAC[1]: A=0x18, result=0x006e8c
+#   MAC[2]: A=0x28, result=0x00ac8c
+#   MAC[3]: A=0x38, result=0x00d98c
+#   MAC[4]: A=0x48, result=0x00f58c
+#   MAC[5]: A=0x57, result=0x01016b
+#   MAC[6]: A=0x66, result=0x00fd57
+#   MAC[7]: A=0x75, result=0x00e97e
+#   B=0x88
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2375000] MAC Enabled (count=14)
+#   MAC[0]: A=0x08, result=0x0023cc
+#   MAC[1]: A=0x18, result=0x007b4c
+#   MAC[2]: A=0x28, result=0x00c1cc
+#   MAC[3]: A=0x38, result=0x00f74c
+#   MAC[4]: A=0x48, result=0x011bcc
+#   MAC[5]: A=0x58, result=0x012f4c
+#   MAC[6]: A=0x67, result=0x0132bb
+#   MAC[7]: A=0x76, result=0x012647
+#   B=0x88
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2385000] MAC Enabled (count=15)
+#   MAC[0]: A=0x08, result=0x00280c
+#   MAC[1]: A=0x18, result=0x00880c
+#   MAC[2]: A=0x28, result=0x00d70c
+#   MAC[3]: A=0x38, result=0x01150c
+#   MAC[4]: A=0x48, result=0x01420c
+#   MAC[5]: A=0x58, result=0x015e0c
+#   MAC[6]: A=0x68, result=0x01690c
+#   MAC[7]: A=0x77, result=0x01640b
+#   B=0x88
+# [2385000] State: FINISH
+# [2395000] FIFO_A[0] Write: data=0x03
+# 
+# [2395000] Computation complete!
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [FAIL] c[0]: Got 0x002c4c, Expected 0x0012cc (Diff: 6528)
+# [FAIL] c[1]: Got 0x00a18c, Expected 0x00550c (Diff: 19584)
+# [FAIL] c[2]: Got 0x0116cc, Expected 0x00974c (Diff: 32640)
+# [FAIL] c[3]: Got 0x018c0c, Expected 0x00d98c (Diff: 45696)
+# [FAIL] c[4]: Got 0x02014c, Expected 0x011bcc (Diff: 58752)
+# [FAIL] c[5]: Got 0x02768c, Expected 0x015e0c (Diff: 71808)
+# [FAIL] c[6]: Got 0x02ebcc, Expected 0x01a04c (Diff: 84864)
+# [FAIL] c[7]: Got 0x03610c, Expected 0x01e28c (Diff: 97920)
+# ============================================
+# Test Summary: 0 PASS, 8 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# [2625000] FIFO_A[1] Write: data=0x13
+# [2635000] FIFO_A[1] Write: data=0x14
+# [2645000] FIFO_A[1] Write: data=0x15
+# [2655000] FIFO_A[1] Write: data=0x16
+# [2665000] FIFO_A[1] Write: data=0x17
+# [2675000] FIFO_A[1] Write: data=0x18
+# [2685000] Memory Read: addr=0x00000002
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2695 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+vlog -sv mac_array.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:53:02 on Feb 05,2026
+# vlog -reportprogress 300 -sv mac_array.sv 
+# -- Compiling module mac_array
+# ** Warning: mac_array.sv(7): (vlog-13314) Defaulting port 'a_in' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: mac_array.sv(9): (vlog-13314) Defaulting port 'fifo_empty' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	mac_array
+# End time: 21:53:02 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+vlog -sv matrix_vector_mult_top.sv  
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:53:02 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_top.sv 
+# -- Compiling module matrix_vector_mult_top
+# 
+# Top level modules:
+# 	matrix_vector_mult_top
+# End time: 21:53:03 on Feb 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart -f
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matrix_vector_mult_top
+# Loading work.mac_array
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x00, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x12, result=0x000891
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x13, result=0x0011b5
+#   MAC[2]: A=0x22, result=0x0010a1
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x14, result=0x001b6e
+#   MAC[2]: A=0x23, result=0x0021e5
+#   MAC[3]: A=0x32, result=0x0018b1
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x15, result=0x0025be
+#   MAC[2]: A=0x24, result=0x0033ce
+#   MAC[3]: A=0x33, result=0x003215
+#   MAC[4]: A=0x42, result=0x0020c1
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x87
+# [2315000] MAC Enabled (count=8)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x16, result=0x0030a7
+#   MAC[2]: A=0x25, result=0x00465e
+#   MAC[3]: A=0x34, result=0x004c2e
+#   MAC[4]: A=0x43, result=0x004245
+#   MAC[5]: A=0x52, result=0x0028d1
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x88
+# [2325000] MAC Enabled (count=9)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x17, result=0x003c2b
+#   MAC[2]: A=0x26, result=0x005997
+#   MAC[3]: A=0x35, result=0x0066fe
+#   MAC[4]: A=0x44, result=0x00648e
+#   MAC[5]: A=0x53, result=0x005275
+#   MAC[6]: A=0x62, result=0x0030e1
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x88
+# [2335000] MAC Enabled (count=10)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x27, result=0x006d7b
+#   MAC[3]: A=0x36, result=0x008287
+#   MAC[4]: A=0x45, result=0x00879e
+#   MAC[5]: A=0x54, result=0x007cee
+#   MAC[6]: A=0x63, result=0x0062a5
+#   MAC[7]: A=0x72, result=0x0038f1
+#   B=0x88
+# [2345000] MAC Enabled (count=11)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x28, result=0x00820c
+#   MAC[3]: A=0x37, result=0x009ecb
+#   MAC[4]: A=0x46, result=0x00ab77
+#   MAC[5]: A=0x55, result=0x00a83e
+#   MAC[6]: A=0x64, result=0x00954e
+#   MAC[7]: A=0x73, result=0x0072d5
+#   B=0x88
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2355000] MAC Enabled (count=12)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x28, result=0x00820c
+#   MAC[3]: A=0x38, result=0x00bbcc
+#   MAC[4]: A=0x47, result=0x00d01b
+#   MAC[5]: A=0x56, result=0x00d467
+#   MAC[6]: A=0x65, result=0x00c8de
+#   MAC[7]: A=0x74, result=0x00adae
+#   B=0x88
+# [2365000] MAC Enabled (count=13)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x28, result=0x00820c
+#   MAC[3]: A=0x38, result=0x00bbcc
+#   MAC[4]: A=0x48, result=0x00f58c
+#   MAC[5]: A=0x57, result=0x01016b
+#   MAC[6]: A=0x66, result=0x00fd57
+#   MAC[7]: A=0x75, result=0x00e97e
+#   B=0x88
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2375000] MAC Enabled (count=14)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x28, result=0x00820c
+#   MAC[3]: A=0x38, result=0x00bbcc
+#   MAC[4]: A=0x48, result=0x00f58c
+#   MAC[5]: A=0x58, result=0x012f4c
+#   MAC[6]: A=0x67, result=0x0132bb
+#   MAC[7]: A=0x76, result=0x012647
+#   B=0x88
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2385000] MAC Enabled (count=15)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x28, result=0x00820c
+#   MAC[3]: A=0x38, result=0x00bbcc
+#   MAC[4]: A=0x48, result=0x00f58c
+#   MAC[5]: A=0x58, result=0x012f4c
+#   MAC[6]: A=0x68, result=0x01690c
+#   MAC[7]: A=0x77, result=0x01640b
+#   B=0x88
+# [2385000] State: FINISH
+# [2395000] FIFO_A[0] Write: data=0x03
+# 
+# [2395000] Computation complete!
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [PASS] c[0]: Got 0x0012cc, Expected 0x0012cc
+# [FAIL] c[1]: Got 0x00484c, Expected 0x00550c (Diff: -3264)
+# [FAIL] c[2]: Got 0x00820c, Expected 0x00974c (Diff: -5440)
+# [FAIL] c[3]: Got 0x00bbcc, Expected 0x00d98c (Diff: -7616)
+# [FAIL] c[4]: Got 0x00f58c, Expected 0x011bcc (Diff: -9792)
+# [FAIL] c[5]: Got 0x012f4c, Expected 0x015e0c (Diff: -11968)
+# [FAIL] c[6]: Got 0x01690c, Expected 0x01a04c (Diff: -14144)
+# [FAIL] c[7]: Got 0x01a2cc, Expected 0x01e28c (Diff: -16320)
+# ============================================
+# Test Summary: 1 PASS, 7 FAIL
+# ============================================
+# 
+# *** SOME TESTS FAILED ***
+# 
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# [2625000] FIFO_A[1] Write: data=0x13
+# [2635000] FIFO_A[1] Write: data=0x14
+# [2645000] FIFO_A[1] Write: data=0x15
+# [2655000] FIFO_A[1] Write: data=0x16
+# [2665000] FIFO_A[1] Write: data=0x17
+# [2675000] FIFO_A[1] Write: data=0x18
+# [2685000] Memory Read: addr=0x00000002
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2695 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+vlog -sv matrix_vector_mult_top.sv
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 21:56:03 on Feb 05,2026
+# vlog -reportprogress 300 -sv matrix_vector_mult_top.sv 
+# -- Compiling module matrix_vector_mult_top
+# 
+# Top level modules:
+# 	matrix_vector_mult_top
+# End time: 21:56:03 on Feb 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# Closing VCD file "matrix_vector_mult.vcd"
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.matrix_vector_mult_top
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (5) for port 'address'. The port definition is at: C:/Users/hshar/ECE554/Minilab1/rom.v(41).
+#    Time: 0 ps  Iteration: 0  Instance: /matrix_vector_mult_tb/dut/memory/memory File: C:/Users/hshar/ECE554/Minilab1/memory.v Line: 25
+run -all
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# ============================================
+# Matrix-Vector Multiplication Testbench
+# ============================================
+# Expected Results:
+#   c[0] = 0x0012cc (4812)
+#   c[1] = 0x00550c (21772)
+#   c[2] = 0x00974c (38732)
+#   c[3] = 0x00d98c (55692)
+#   c[4] = 0x011bcc (72652)
+#   c[5] = 0x015e0c (89612)
+#   c[6] = 0x01a04c (106572)
+#   c[7] = 0x01e28c (123532)
+# ============================================
+# 
+# [45000] Reset released
+# [95000] Starting computation
+# [105000] State: LOADING
+# [135000] Memory Read: addr=0x00000000
+# [265000] Memory Data Valid: data=0x0102030405060708
+# [285000] FIFO_A[0] Write: data=0x01
+# [295000] FIFO_A[0] Write: data=0x02
+# [305000] FIFO_A[0] Write: data=0x03
+# [315000] FIFO_A[0] Write: data=0x04
+# [325000] FIFO_A[0] Write: data=0x05
+# [335000] FIFO_A[0] Write: data=0x06
+# [345000] FIFO_A[0] Write: data=0x07
+# [355000] FIFO_A[0] Write: data=0x08
+# [365000] Memory Read: addr=0x00000001
+# [495000] Memory Data Valid: data=0x1112131415161718
+# [515000] FIFO_A[1] Write: data=0x11
+# [525000] FIFO_A[1] Write: data=0x12
+# [535000] FIFO_A[1] Write: data=0x13
+# [545000] FIFO_A[1] Write: data=0x14
+# [555000] FIFO_A[1] Write: data=0x15
+# [565000] FIFO_A[1] Write: data=0x16
+# [575000] FIFO_A[1] Write: data=0x17
+# [585000] FIFO_A[1] Write: data=0x18
+# [595000] Memory Read: addr=0x00000002
+# [725000] Memory Data Valid: data=0x2122232425262728
+# [745000] FIFO_A[2] Write: data=0x21
+# [755000] FIFO_A[2] Write: data=0x22
+# [765000] FIFO_A[2] Write: data=0x23
+# [775000] FIFO_A[2] Write: data=0x24
+# [785000] FIFO_A[2] Write: data=0x25
+# [795000] FIFO_A[2] Write: data=0x26
+# [805000] FIFO_A[2] Write: data=0x27
+# [815000] FIFO_A[2] Write: data=0x28
+# [825000] Memory Read: addr=0x00000003
+# [955000] Memory Data Valid: data=0x3132333435363738
+# [975000] FIFO_A[3] Write: data=0x31
+# [985000] FIFO_A[3] Write: data=0x32
+# [995000] FIFO_A[3] Write: data=0x33
+# [1005000] FIFO_A[3] Write: data=0x34
+# [1015000] FIFO_A[3] Write: data=0x35
+# [1025000] FIFO_A[3] Write: data=0x36
+# [1035000] FIFO_A[3] Write: data=0x37
+# [1045000] FIFO_A[3] Write: data=0x38
+# [1055000] Memory Read: addr=0x00000004
+# [1185000] Memory Data Valid: data=0x4142434445464748
+# [1205000] FIFO_A[4] Write: data=0x41
+# [1215000] FIFO_A[4] Write: data=0x42
+# [1225000] FIFO_A[4] Write: data=0x43
+# [1235000] FIFO_A[4] Write: data=0x44
+# [1245000] FIFO_A[4] Write: data=0x45
+# [1255000] FIFO_A[4] Write: data=0x46
+# [1265000] FIFO_A[4] Write: data=0x47
+# [1275000] FIFO_A[4] Write: data=0x48
+# [1285000] Memory Read: addr=0x00000005
+# [1415000] Memory Data Valid: data=0x5152535455565758
+# [1435000] FIFO_A[5] Write: data=0x51
+# [1445000] FIFO_A[5] Write: data=0x52
+# [1455000] FIFO_A[5] Write: data=0x53
+# [1465000] FIFO_A[5] Write: data=0x54
+# [1475000] FIFO_A[5] Write: data=0x55
+# [1485000] FIFO_A[5] Write: data=0x56
+# [1495000] FIFO_A[5] Write: data=0x57
+# [1505000] FIFO_A[5] Write: data=0x58
+# [1515000] Memory Read: addr=0x00000006
+# [1645000] Memory Data Valid: data=0x6162636465666768
+# [1665000] FIFO_A[6] Write: data=0x61
+# [1675000] FIFO_A[6] Write: data=0x62
+# [1685000] FIFO_A[6] Write: data=0x63
+# [1695000] FIFO_A[6] Write: data=0x64
+# [1705000] FIFO_A[6] Write: data=0x65
+# [1715000] FIFO_A[6] Write: data=0x66
+# [1725000] FIFO_A[6] Write: data=0x67
+# [1735000] FIFO_A[6] Write: data=0x68
+# [1745000] Memory Read: addr=0x00000007
+# [1875000] Memory Data Valid: data=0x7172737475767778
+# [1895000] FIFO_A[7] Write: data=0x71
+# [1905000] FIFO_A[7] Write: data=0x72
+# [1915000] FIFO_A[7] Write: data=0x73
+# [1925000] FIFO_A[7] Write: data=0x74
+# [1935000] FIFO_A[7] Write: data=0x75
+# [1945000] FIFO_A[7] Write: data=0x76
+# [1955000] FIFO_A[7] Write: data=0x77
+# [1965000] FIFO_A[7] Write: data=0x78
+# [1975000] Memory Read: addr=0x00000008
+# [2105000] Memory Data Valid: data=0x8182838485868788
+# [2125000] FIFO_B Write: data=0x81
+# [2135000] FIFO_B Write: data=0x82
+# [2145000] FIFO_B Write: data=0x83
+# [2155000] FIFO_B Write: data=0x84
+# [2165000] FIFO_B Write: data=0x85
+# [2175000] FIFO_B Write: data=0x86
+# [2185000] FIFO_B Write: data=0x87
+# [2195000] FIFO_B Write: data=0x88
+# [2205000] State: WAIT_FULL
+# [2225000] Memory Read: addr=0x00000000
+# [2225000] State: COMPUTING
+# [2245000] MAC Enabled (count=1)
+#   MAC[0]: A=0x00, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x81
+# [2255000] MAC Enabled (count=2)
+#   MAC[0]: A=0x01, result=0x000000
+#   MAC[1]: A=0x00, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x82
+# [2265000] MAC Enabled (count=3)
+#   MAC[0]: A=0x02, result=0x000081
+#   MAC[1]: A=0x11, result=0x000000
+#   MAC[2]: A=0x00, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x83
+# [2275000] MAC Enabled (count=4)
+#   MAC[0]: A=0x03, result=0x000185
+#   MAC[1]: A=0x12, result=0x000891
+#   MAC[2]: A=0x21, result=0x000000
+#   MAC[3]: A=0x00, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x84
+# [2285000] MAC Enabled (count=5)
+#   MAC[0]: A=0x04, result=0x00030e
+#   MAC[1]: A=0x13, result=0x0011b5
+#   MAC[2]: A=0x22, result=0x0010a1
+#   MAC[3]: A=0x31, result=0x000000
+#   MAC[4]: A=0x00, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x85
+# [2295000] MAC Enabled (count=6)
+#   MAC[0]: A=0x05, result=0x00051e
+#   MAC[1]: A=0x14, result=0x001b6e
+#   MAC[2]: A=0x23, result=0x0021e5
+#   MAC[3]: A=0x32, result=0x0018b1
+#   MAC[4]: A=0x41, result=0x000000
+#   MAC[5]: A=0x00, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x86
+# [2305000] MAC Enabled (count=7)
+#   MAC[0]: A=0x06, result=0x0007b7
+#   MAC[1]: A=0x15, result=0x0025be
+#   MAC[2]: A=0x24, result=0x0033ce
+#   MAC[3]: A=0x33, result=0x003215
+#   MAC[4]: A=0x42, result=0x0020c1
+#   MAC[5]: A=0x51, result=0x000000
+#   MAC[6]: A=0x00, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x87
+# [2315000] MAC Enabled (count=8)
+#   MAC[0]: A=0x07, result=0x000adb
+#   MAC[1]: A=0x16, result=0x0030a7
+#   MAC[2]: A=0x25, result=0x00465e
+#   MAC[3]: A=0x34, result=0x004c2e
+#   MAC[4]: A=0x43, result=0x004245
+#   MAC[5]: A=0x52, result=0x0028d1
+#   MAC[6]: A=0x61, result=0x000000
+#   MAC[7]: A=0x00, result=0x000000
+#   B=0x88
+# [2325000] MAC Enabled (count=9)
+#   MAC[0]: A=0x08, result=0x000e8c
+#   MAC[1]: A=0x17, result=0x003c2b
+#   MAC[2]: A=0x26, result=0x005997
+#   MAC[3]: A=0x35, result=0x0066fe
+#   MAC[4]: A=0x44, result=0x00648e
+#   MAC[5]: A=0x53, result=0x005275
+#   MAC[6]: A=0x62, result=0x0030e1
+#   MAC[7]: A=0x71, result=0x000000
+#   B=0x88
+# [2335000] MAC Enabled (count=10)
+#   MAC[0]: A=0x08, result=0x0012cc
+#   MAC[1]: A=0x18, result=0x00484c
+#   MAC[2]: A=0x27, result=0x006d7b
+#   MAC[3]: A=0x36, result=0x008287
+#   MAC[4]: A=0x45, result=0x00879e
+#   MAC[5]: A=0x54, result=0x007cee
+#   MAC[6]: A=0x63, result=0x0062a5
+#   MAC[7]: A=0x72, result=0x0038f1
+#   B=0x88
+# [2345000] MAC Enabled (count=11)
+#   MAC[0]: A=0x08, result=0x0012cc
+#   MAC[1]: A=0x18, result=0x00550c
+#   MAC[2]: A=0x28, result=0x00820c
+#   MAC[3]: A=0x37, result=0x009ecb
+#   MAC[4]: A=0x46, result=0x00ab77
+#   MAC[5]: A=0x55, result=0x00a83e
+#   MAC[6]: A=0x64, result=0x00954e
+#   MAC[7]: A=0x73, result=0x0072d5
+#   B=0x88
+# [2355000] Memory Data Valid: data=0x0102030405060708
+# [2355000] MAC Enabled (count=12)
+#   MAC[0]: A=0x08, result=0x0012cc
+#   MAC[1]: A=0x18, result=0x00550c
+#   MAC[2]: A=0x28, result=0x00974c
+#   MAC[3]: A=0x38, result=0x00bbcc
+#   MAC[4]: A=0x47, result=0x00d01b
+#   MAC[5]: A=0x56, result=0x00d467
+#   MAC[6]: A=0x65, result=0x00c8de
+#   MAC[7]: A=0x74, result=0x00adae
+#   B=0x88
+# [2365000] MAC Enabled (count=13)
+#   MAC[0]: A=0x08, result=0x0012cc
+#   MAC[1]: A=0x18, result=0x00550c
+#   MAC[2]: A=0x28, result=0x00974c
+#   MAC[3]: A=0x38, result=0x00d98c
+#   MAC[4]: A=0x48, result=0x00f58c
+#   MAC[5]: A=0x57, result=0x01016b
+#   MAC[6]: A=0x66, result=0x00fd57
+#   MAC[7]: A=0x75, result=0x00e97e
+#   B=0x88
+# [2375000] FIFO_A[0] Write: data=0x01
+# [2375000] MAC Enabled (count=14)
+#   MAC[0]: A=0x08, result=0x0012cc
+#   MAC[1]: A=0x18, result=0x00550c
+#   MAC[2]: A=0x28, result=0x00974c
+#   MAC[3]: A=0x38, result=0x00d98c
+#   MAC[4]: A=0x48, result=0x011bcc
+#   MAC[5]: A=0x58, result=0x012f4c
+#   MAC[6]: A=0x67, result=0x0132bb
+#   MAC[7]: A=0x76, result=0x012647
+#   B=0x88
+# [2385000] FIFO_A[0] Write: data=0x02
+# [2385000] MAC Enabled (count=15)
+#   MAC[0]: A=0x08, result=0x0012cc
+#   MAC[1]: A=0x18, result=0x00550c
+#   MAC[2]: A=0x28, result=0x00974c
+#   MAC[3]: A=0x38, result=0x00d98c
+#   MAC[4]: A=0x48, result=0x011bcc
+#   MAC[5]: A=0x58, result=0x015e0c
+#   MAC[6]: A=0x68, result=0x01690c
+#   MAC[7]: A=0x77, result=0x01640b
+#   B=0x88
+# [2385000] State: FINISH
+# [2395000] FIFO_A[0] Write: data=0x03
+# 
+# [2395000] Computation complete!
+# [2405000] FIFO_A[0] Write: data=0x04
+# [2415000] FIFO_A[0] Write: data=0x05
+# [2425000] FIFO_A[0] Write: data=0x06
+# [2435000] FIFO_A[0] Write: data=0x07
+# [2445000] FIFO_A[0] Write: data=0x08
+# [2455000] Memory Read: addr=0x00000001
+# 
+# ============================================
+# Results Verification:
+# ============================================
+# [PASS] c[0]: Got 0x0012cc, Expected 0x0012cc
+# [PASS] c[1]: Got 0x00550c, Expected 0x00550c
+# [PASS] c[2]: Got 0x00974c, Expected 0x00974c
+# [PASS] c[3]: Got 0x00d98c, Expected 0x00d98c
+# [PASS] c[4]: Got 0x011bcc, Expected 0x011bcc
+# [PASS] c[5]: Got 0x015e0c, Expected 0x015e0c
+# [PASS] c[6]: Got 0x01a04c, Expected 0x01a04c
+# [PASS] c[7]: Got 0x01e28c, Expected 0x01e28c
+# ============================================
+# Test Summary: 8 PASS, 0 FAIL
+# ============================================
+# 
+# *** ALL TESTS PASSED ***
+# 
+# [2585000] Memory Data Valid: data=0x1112131415161718
+# [2605000] FIFO_A[1] Write: data=0x11
+# [2615000] FIFO_A[1] Write: data=0x12
+# [2625000] FIFO_A[1] Write: data=0x13
+# [2635000] FIFO_A[1] Write: data=0x14
+# [2645000] FIFO_A[1] Write: data=0x15
+# [2655000] FIFO_A[1] Write: data=0x16
+# [2665000] FIFO_A[1] Write: data=0x17
+# [2675000] FIFO_A[1] Write: data=0x18
+# [2685000] Memory Read: addr=0x00000002
+# ** Note: $finish    : matrix_vector_mult_tb.sv(173)
+#    Time: 2695 ns  Iteration: 1  Instance: /matrix_vector_mult_tb
+# 1
+# Break in Module matrix_vector_mult_tb at matrix_vector_mult_tb.sv line 173
+# End time: 13:08:05 on Feb 17,2026, Elapsed time: 279:35:24
+# Errors: 0, Warnings: 1
