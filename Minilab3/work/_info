@@ -1,0 +1,209 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/ryank/Desktop/ECE554/Alterra/sp25-minilab1-main
+vbaud_rate_generator
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1771966293
+!i10b 1
+!s100 <R=3HRQI:2fVeBLC9OEAe0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Ib@2AM3X5=`0?lgZ`:Pn;k3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+Z4 dC:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART
+w1771966290
+8C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/baud_rate_generator.sv
+FC:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/baud_rate_generator.sv
+!i122 14
+L0 1 62
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1771966293.000000
+!s107 C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/baud_rate_generator.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/baud_rate_generator.sv|
+!i113 1
+Z7 o-work work -sv
+Z8 tCvgOpt 0
+vbus_interface
+R0
+Z9 !s110 1771966658
+!i10b 1
+!s100 d`X7218?88V_`1mAdglBV3
+R2
+I9@9e^1fLzCMWE5E>:m6Vz1
+R3
+S1
+R4
+Z10 w1771966633
+Z11 8C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart.sv
+Z12 FC:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart.sv
+!i122 16
+L0 76 66
+R5
+r1
+!s85 0
+31
+Z13 !s108 1771966658.000000
+!s107 C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart.sv|
+Z14 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart.sv|
+!i113 1
+R7
+R8
+vdriver
+R0
+R1
+!i10b 1
+!s100 Zj<haBQVbESRkfnJ[h@g62
+R2
+Io3F;nz=5KMS94APaQN]NB1
+R3
+S1
+R4
+w1771966282
+8C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/driver.sv
+FC:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/driver.sv
+!i122 15
+L0 1 105
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/driver.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/driver.sv|
+!i113 1
+R7
+R8
+vlab1_spart
+!s110 1771964890
+!i10b 1
+!s100 HhT4S75nH[fLLYN4goE4C0
+R2
+I2V>;ck7U9`YaMHG@?Cc7I1
+R3
+R4
+w1739251657
+8C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/lab1_spart.v
+FC:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/lab1_spart.v
+!i122 7
+L0 6 133
+R5
+r1
+!s85 0
+31
+!s108 1771964890.000000
+!s107 C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/lab1_spart.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/lab1_spart.v|
+!i113 1
+o-work work
+R8
+vrx
+R0
+R9
+!i10b 1
+!s100 Q5hP1lIoXf^YoGWR`:eT?1
+R2
+IME;ghYhgi[Akl@g=CmhB;2
+R3
+S1
+R4
+R10
+R11
+R12
+!i122 16
+L0 143 156
+R5
+r1
+!s85 0
+31
+R13
+Z15 !s107 C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart.sv|
+R14
+!i113 1
+R7
+R8
+vspart
+R0
+R9
+!i10b 1
+!s100 4jZi@zKfX>m5VM`F[[ZLR3
+R2
+IA<ROFPXjDO2P1>JKmXjh_0
+R3
+S1
+R4
+R10
+R11
+R12
+!i122 16
+L0 1 74
+R5
+r1
+!s85 0
+31
+R13
+R15
+R14
+!i113 1
+R7
+R8
+vspart_tb
+R0
+!s110 1771965632
+!i10b 1
+!s100 M3gGOZT`SC^WH]Jkc15lN3
+R2
+I3hQoTP]d85[YnV:SzG`Y?3
+R3
+S1
+R4
+w1771965488
+8C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv
+FC:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv
+!i122 11
+L0 3 138
+R5
+r1
+!s85 0
+31
+!s108 1771965632.000000
+!s107 C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv|
+!i113 1
+R7
+R8
+vtx
+R0
+R9
+!i10b 1
+!s100 JV]]FD_9YegPkYSQ<9V5E3
+R2
+I=Wc;IPQ77kzk94zKk[PC]0
+R3
+S1
+R4
+R10
+R11
+R12
+!i122 16
+L0 300 127
+R5
+r1
+!s85 0
+31
+R13
+R15
+R14
+!i113 1
+R7
+R8

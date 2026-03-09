@@ -1,0 +1,14 @@
+
+State Machine - |lab1_spart|driver:driver0|state
+Name state.RECEIVE state.RECEIVE_WAIT state.INIT_HIGH_DB state.000 
+state.000 0 0 0 0 
+state.INIT_HIGH_DB 0 0 1 1 
+state.RECEIVE_WAIT 0 1 0 1 
+state.RECEIVE 1 0 0 1 
+
+State Machine - |lab1_spart|spart:spart0|rx:rx0|state
+Name state.DONE state.RCV state.STRTBIT state.IDLE 
+state.IDLE 0 0 0 0 
+state.STRTBIT 0 0 1 1 
+state.RCV 0 1 0 1 
+state.DONE 1 0 0 1 

@@ -1,0 +1,56 @@
+vsim -gui work.spart_tb
+# vsim -gui work.spart_tb 
+# Start time: 14:53:17 on Feb 24,2026
+# Loading sv_std.std
+# Loading work.spart_tb
+# Loading work.driver
+# Loading work.spart
+# Loading work.bus_interface
+# Loading work.baud_rate_generator
+# Loading work.tx
+# Loading work.rx
+add wave -position insertpoint sim:/spart_tb/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ryank  Hostname: RYANLAPTOP  ProcessID: 13104
+#           Attempting to use alternate WLF file "./wlftmvenne".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftmvenne
+add wave -position insertpoint sim:/spart_tb/dut/*
+add wave -position insertpoint sim:/spart_tb/drv0/*
+run -all
+# PASS: Echoed byte a5
+# PASS: Echoed byte dd
+# ** Note: $stop    : C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv(137)
+#    Time: 3758070 ns  Iteration: 1  Instance: /spart_tb
+# Break in Module spart_tb at C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv line 137
+quit -sim
+# End time: 14:57:19 on Feb 24,2026, Elapsed time: 0:04:02
+# Errors: 0, Warnings: 5
+# Compile of spart.sv was successful.
+vsim -gui work.spart_tb
+# vsim -gui work.spart_tb 
+# Start time: 14:57:44 on Feb 24,2026
+# Loading sv_std.std
+# Loading work.spart_tb
+# Loading work.driver
+# Loading work.spart
+# Loading work.bus_interface
+# Loading work.baud_rate_generator
+# Loading work.tx
+# Loading work.rx
+add wave -position insertpoint sim:/spart_tb/*
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: ryank  Hostname: RYANLAPTOP  ProcessID: 13104
+#           Attempting to use alternate WLF file "./wlftvwmt96".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftvwmt96
+add wave -position insertpoint sim:/spart_tb/drv0/*
+add wave -position insertpoint sim:/spart_tb/dut/*
+run -all
+# PASS: Echoed byte a5
+# PASS: Echoed byte dd
+# ** Note: $stop    : C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv(137)
+#    Time: 3758070 ns  Iteration: 1  Instance: /spart_tb
+# Break in Module spart_tb at C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv line 137
+# End time: 16:18:13 on Feb 24,2026, Elapsed time: 1:20:29
+# Errors: 0, Warnings: 6

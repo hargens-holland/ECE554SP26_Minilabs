@@ -1,0 +1,39 @@
+C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/baud_rate_generator.sv {1 {vlog -work work -sv -stats=none C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/baud_rate_generator.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module baud_rate_generator
+
+Top level modules:
+	baud_rate_generator
+
+} {} {}} C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart.sv {1 {vlog -work work -sv -stats=none C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module spart
+-- Compiling module bus_interface
+-- Compiling module rx
+-- Compiling module tx
+
+Top level modules:
+	spart
+
+} {} {}} C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/lab1_spart.v {1 {vlog -work work -stats=none C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/lab1_spart.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module lab1_spart
+
+Top level modules:
+	lab1_spart
+
+} {} {}} C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/spart_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module spart_tb
+
+Top level modules:
+	spart_tb
+
+} {} {}} C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/driver.sv {1 {vlog -work work -sv -stats=none C:/Users/ryank/Desktop/ECE554/Alterra/Lab1-SPART/driver.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module driver
+
+Top level modules:
+	driver
+
+} {} {}}
